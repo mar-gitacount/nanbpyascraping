@@ -129,7 +129,7 @@ with open(html_file_path, "r", encoding="utf-8") as file:
         # テキストを走査
         input_text = item.text
         text = input_text.splitlines()
-        row_item = [0] * 5
+        row_item = []
         index += 1
 
         text = list(filter(None, text))
@@ -142,6 +142,7 @@ with open(html_file_path, "r", encoding="utf-8") as file:
             # ?"リファレンスNO", "製品名", "サイズ"=配列
             # ?未使用品および中古品=文字列
             cyuko_match = cyukocheck_pattern.search(item)
+            print(f"{len(text)}はアイテムの数です。")
             if cyuko_match:
                 print("金額を取得", description=cyuko_match.group("description"))
                 item = re.sub(chf_pattern, "", item)
@@ -149,25 +150,26 @@ with open(html_file_path, "r", encoding="utf-8") as file:
                 continue
             else:
                 print("→は金額でない", item)
-
+            #
             if "中古品" in item:
                 print("中古品→", item)
+                item = item.replace("中古品", "")
+                if len(text) == 3:
+                    row_item.append("")
+                    row_item.append(item)
+                else:
+                    row_item.append(item)
+                continue
             else:
                 print("中古品でない→", item)
             if "未使用品" in item:
                 print("未使用品", item)
+                item = item.replace("未使用品", "")
+                row_item.append(item)
+                continue
             else:
                 print("未使用品でない")
 
-            # decide
-            # understand
-            # mean
-            # notice
-            # wake
-            # introduce
-            # borrow
-            # pick
-            # invite
             # !アイテムが返ってくる配列の場合を分岐する。
             item = extract_amount_or_text(item)
             # itemの配列判定して、配列の長さだけrow_itemに追加する。
@@ -209,12 +211,3 @@ with open(html_file_path, "r", encoding="utf-8") as file:
         print("-------ここでエクセルファイルに入稿する---------")
 
 wb.save(file_name)
-# 決める
-# 理解する
-# 意味する
-# 気づく
-# 起きる
-# 紹介する
-# 借りる
-# つまむ
-# 招待する。
