@@ -67,7 +67,7 @@ def auto_extract_random():
     with open(file_path, "r", encoding="utf-8") as file:
         data = json.load(file)
     # 300部分の辞書を取得する
-    dictionary_300 = data["300"]
+    dictionary_300 = data["400"]
     # 辞書内の各キーと値に対してループ処理を行う
     for key, value in dictionary_300.items():
         print(f"キー: {key}, 値: {value}")

@@ -63,5 +63,26 @@
         "I decided to buy a laptop":"ノートパソコンを買おうと決心しました"
         
 
+    },
+    "400":{
+        "elementary":"初歩の",
+        "seniur":"年上",
+        "serious":"深刻な",
+        "helpful":"役立つ",
+        "excellent":"素晴らしい",
+        "direct":"直接の",
+        "comfortable":"快適な",
+        "terrible":"ひどい",
+        "own":"形容詞:自分自身の,動詞:所有する",
+        "necessary":"必要な",
+        "honest":"正直な",
+        "possible":"可能な、可能性がある",
+        "impossible":"不可能な",
+        "rude":"失礼な",
+        "thick":"厚い",
+        "thin":"痩せた",
+        "independent":"独立した",
+        "native":"母国の,"
     }
+    
 }
