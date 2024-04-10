@@ -67,26 +67,35 @@ def auto_extract_random():
     with open(file_path, "r", encoding="utf-8") as file:
         data = json.load(file)
     # 300部分の辞書を取得する
-    dictionary_300 = data["400"]
+    dictionary_300 = data["500"]
+    
     # 辞書内の各キーと値に対してループ処理を行う
     for key, value in dictionary_300.items():
         print(f"キー: {key}, 値: {value}")
-
     # 辞書のコピーを作成してイテレーションする
     items_copy = dict(dictionary_300)
-    for key, value in items_copy.items():
-        print("連想配列内の要素をランダムに抽出中...")
-        time.sleep(2)  # 2秒待機（仮の処理として）
-        # ランダムに要素を選択
-        random_key, random_value = random.choice(list(dictionary_300.items()))
-        print("抽出が完了しました。エンターキーを押して結果を表示します。")
-        print(f"{random_key}: はなに")
-        input()  # エンターキーを待機
-        print(f"選択された要素: {random_key}: {random_value}")
+    while 0 < len(dictionary_300) :
+        for key, value in items_copy.items():
+            # if 0 < len(dictionary_300):
+            #     print("連想配列が終了しました!!")
+            #     break
+            print("連想配列内の要素をランダムに抽出中...")
+            # time.sleep(2)  # 2秒待機（仮の処理として）
+            # ランダムに要素を選択
+            random_key, random_value = random.choice(list(dictionary_300.items()))
+            print("抽出が完了しました。エンターキーを押して結果を表示します。")
+            print(f"{random_key}: はなに")
+            input()  # エンターキーを待機
+            print(f"選択された要素: {random_key}: {random_value}")
+            # 選択された要素を元の辞書から削除
+            # 正解なら削除、不正解なら残し
+            user_input = input("正解ならy を押してください,間違いならそれ以外を押してください ")
+            user_input_value = user_input.lower() == 'y'
+           
+            if(user_input_value):
+                del dictionary_300[random_key]
+            print(f"{len(dictionary_300)}/{len(items_copy)}")
 
-        # 選択された要素を元の辞書から削除
-        del dictionary_300[random_key]
-
-
+ 
 # プログラムの実行
 auto_extract_random()
